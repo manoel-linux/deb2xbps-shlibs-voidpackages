@@ -1,0 +1,277 @@
+#!/bin/sh
+
+echo "#################################################################"
+echo "deb2xbps-version: june 2023 xdeb-based"
+echo "#################################################################"
+echo " ██████  ███████ ██████  ██████  ██   ██ ██████  ██████  ███████ "
+echo " ██   ██ ██      ██   ██      ██  ██ ██  ██   ██ ██   ██ ██      "
+echo " ██   ██ █████   ██████   █████    ███   ██████  ██████  ███████ "
+echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
+echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
+echo "#################################################################"
+echo "build: 0.2.3"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
+echo "xdeb-github: https://github.com/toluschr/xdeb"
+echo "#################################################################"
+echo "$(date)"
+echo "Linux $(uname -r)"
+echo "#################################################################"
+
+_PKGROOT="${_PKGROOT-${PWD}}"
+_WORKDIR="${_PKGROOT}/workdir"
+_DESTDIR="${_PKGROOT}/destdir"
+_DATADIR="${_PKGROOT}/datadir"
+_BINPKGS="${_PKGROOT}/binpkgs"
+_SHLIBS="${_PKGROOT}/shlibs"
+
+_OPT_DEPS="${_OPT_DEPS-false}"
+_OPT_SYNC="${_OPT_SYNC-false}"
+_OPT_QUIT="${_OPT_QUIT-false}"
+_OPT_EXTRACT="${_OPT_EXTRACT-true}"
+_OPT_CLEAN_DIR="${_OPT_CLEAN_DIR-false}"
+_OPT_FIX_CONFLICT="${_OPT_FIX_CONFLICT-false}"
+_OPT_WARN_CONFLICT="${_OPT_WARN_CONFLICT-true}"
+_SUFFIX=""
+
+alias pkgrep="grep -Po -m1"
+
+log_info() {
+    echo "\033[1;36mI\033[0m ${*}\033[0m"
+}
+
+log_warn() {
+    echo "\033[1;33mW\033[0m ${*}\033[0m"
+}
+
+log_crit() {
+    echo "\033[1;31mE\033[0;1m ${*}\033[0m"
+}
+
+clean() {
+    rm -f "${_BINPKGS}"/.xbps-pkg-*
+    rm -rf "${_WORKDIR}"
+    rm -rf "${_DATADIR}"
+    rm -rf "${_DESTDIR}"
+}
+
+clean_repodata() {
+    rm -rf "${_BINPKGS}"/*-repodata
+}
+
+clean_all() {
+    clean
+    clean_repodata
+    rm -rf "${_BINPKGS}"
+    rm -rf "${_SHLIBS}"
+}
+
+genrdeps() {
+    find "${_DESTDIR}" -type f -exec sh -c 'file "$0" | grep -q ELF' {} \; -print0 |
+    xargs -0 objdump -p |
+    awk '/NEEDED/ {print $2}' |
+    sort -u |
+    while read -r lib; do
+        [ -n "$(find "${_DESTDIR}" -name "${lib}" -print -quit)" ] && continue
+
+        _lib=$(echo "${lib}" | sed -E 's|\+|\\+|g')
+        rdep="$(grep -E -m1 "^${_lib}[[:blank:]]+.*$" "${_SHLIBS}" | awk '{print $2}')"
+
+        [ -z "${rdep}" ] && {
+            log_warn "${lib}" >&2
+            continue
+        }
+
+        echo "${rdep%-*}${_SUFFIX}>=${rdep##*-}"
+    done | sort -u | tr '\n' ' '
+}
+
+fix_conflict() {
+    [ ! -e "${_DESTDIR}/${1}" ] || [ ! -d "${_DESTDIR}/${1}" ] && return 1
+
+    src="${1}"
+    dst="${2}/${3-"${1}"}"
+    mkdir -p "${_DESTDIR}/${2}"
+    mv "${_DESTDIR}/${src}" "${_DESTDIR}/${dst}"
+    log_info "'${src}' -> '${dst}'"
+
+    return 0
+}
+
+check_command() {
+    command -v "$1" > /dev/null 2>&1 && return 0
+
+    log_warn "'${1}'"
+    exit 1
+}
+
+usage() {
+    cat << EOF
+  -y                          Automatic dependencies
+  -S                          Sync dependency file
+  -q                          Don't build the package at all
+  -C                          Clean all files
+  -b                          No extract, just build files in destdir
+  -u                          Remove empty directories
+  -32                         Add the 32bit suffix
+  -i                          Ignore file conflicts
+  -f                          Attempt to automatically fix common conflicts
+  --deps=...                  Add manual dependencies
+  --arch=...                  Add an architecture for the package to run on
+  --rev=...                   Set package revision. Alternative to -y
+  --help                      Show this help page
+EOF
+    exit "${1}"
+}
+
+check_command xz
+check_command tar
+check_command curl
+check_command ar
+check_command objdump
+check_command xbps-rindex
+check_command xbps-create
+
+mkdir -p "${_PKGROOT}"
+
+while [ "${#}" != "0" ]; do
+	case "${1}" in
+		--deps|--arch|--revision)
+			log_crit "'${1}' invalid. Use ${1}=... instead"; exit 1; continue;;
+
+		--deps=*) _DEPENDENCIES="${_DEPENDENCIES}${1#*=} "; shift; continue;;
+		--arch=*) archs="${1#*=}"; shift; continue;;
+		--revision=*|--rev=*) revision="${1#*=}"; shift; continue;;
+
+		--help) usage 0;;
+		--*) log_crit "invalid option '${1}'"; usage 1; exit 1;;
+		-*);;
+		*) [ "${#}" = 1 ] && _BASEPKG="${1}"; break;;
+	esac
+
+	flag="${1#?}"
+	while [ -n "${flag}" ]; do
+		case "${flag}" in
+			S*) _OPT_SYNC=true;;
+			y*) _OPT_DEPS=true;;
+			h*) usage 0;;
+			c*) clean;;
+			C*) clean_all;;
+			r*) clean_repodata;;
+			q*) _OPT_QUIT=true;;
+			Q*) exit 0;;
+			b*) _OPT_EXTRACT=false;;
+			u*) _OPT_CLEAN_DIR=true;;
+			m*) _SUFFIX="-32bit";;
+			i*) _OPT_WARN_CONFLICT=false;;
+			f*) _OPT_FIX_CONFLICT=true;;
+			*) log_crit "invalid option -- '${flag%"${flag#?}"}'"; usage 1;;
+		esac
+
+		flag="${flag#?}"
+	done
+
+	shift
+done
+
+[ "${_OPT_SYNC}" = true ] && {
+	curl -s "https://raw.githubusercontent.com/void-linux/void-packages/master/common/shlibs" -o "${_SHLIBS}"
+}
+
+[ "${_OPT_DEPS}" = true ] && [ ! -r "${_SHLIBS}" ] && {
+	exit 1
+}
+
+[ "${_OPT_EXTRACT}" = true ] && {
+	echo "${_BASEPKG}" | grep -q "\.deb$" && [ -r "${_BASEPKG}" ] || {
+		exit 1
+	}
+}
+
+mkdir -p "${_BINPKGS}"
+mkdir -p "${_DATADIR}"
+mkdir -p "${_DESTDIR}"
+mkdir -p "${_WORKDIR}"
+
+ar -xf "${_BASEPKG}" --output "${_WORKDIR}" &&
+tar -xf "${_WORKDIR}"/control.* -C "${_DATADIR}" &&
+tar -xf "${_WORKDIR}"/data.* -C "${_DESTDIR}" || {
+	log_crit "ERROR! Check .deb"
+	exit 1
+}
+
+[ "${_OPT_QUIT}" = true ] && {
+	exit 0;
+}
+
+
+
+[ "${_OPT_QUIT}" = true ] && {
+	exit 0;
+}
+
+pkgname=$(pkgrep "Package:[ \t]*\K.*" "${_DATADIR}/control")
+version=$(pkgrep "Version:[ \t]*\K.*" "${_DATADIR}/control")
+license=$(pkgrep "License:[ \t]*\K.*" "${_DATADIR}/control")
+maintainer=$(pkgrep "Maintainer:[ \t]*\K.*" "${_DATADIR}/control")
+short_desc=$(pkgrep "Description:[ \t]*\K.*" "${_DATADIR}/control")
+long_desc=$(pkgrep -z "Description:[ \t\n]*\K.*" "${_DATADIR}/control" | tr '\0' '\n')
+archs=${archs-$(pkgrep "Architecture:[ \t]*\K.*" "${_DATADIR}/control")}
+revision="${revision-1}"
+
+[ -z "${short_desc}" ] && short_desc="${long_desc}"
+
+version=$(echo "${version}" | grep -Po "^(\d|\.)*")
+case "${archs}" in
+	amd64) archs="x86_64";;
+	arm64) archs="aarch64";;
+	armhf) archs="armv7l";;
+	i386) archs="i686";;
+	all) archs="noarch";;
+esac
+
+[ "${_OPT_DEPS}" = true ] && _DEPENDENCIES="${_DEPENDENCIES}$(genrdeps)" 
+
+_DEPENDENCIES="${_DEPENDENCIES%* }"
+[ -n "${_DEPENDENCIES}" ] && log_info "(${_DEPENDENCIES})"
+
+[ "${_OPT_FIX_CONFLICT}" = true ] && {
+	fix_conflict bin   usr
+	fix_conflict lib   usr
+	fix_conflict lib32 usr
+	fix_conflict lib64 usr
+	fix_conflict sbin  usr
+	fix_conflict usr/lib64 usr lib
+}
+
+[ "${_OPT_CLEAN_DIR}" != true ] && [ "${_OPT_WARN_CONFLICT}" != true ] || {
+	command -v xbps-query >/dev/null && ign="$(xbps-query -f "${pkgname}" | sed 's/ -> .*//')"
+
+	find "${_DESTDIR}" -depth | {
+		while read -r f; do
+			[ "${_OPT_CLEAN_DIR}" = true ] && [ -z "$(ls -A "${f}")" ] && {
+				rm -rf "${f}"
+				continue
+			}
+
+			[ "${_OPT_WARN_CONFLICT}" != true ] && continue
+
+			fr="${f#${_DESTDIR}}"
+			[ ! -e "${fr}" ] && continue
+			[ ! -L "${fr}" ] && [ -d "${fr}" ] && [ ! -L "${f}" ] && [ -d "${f}" ] && continue
+
+			echo "${ign}" | grep -q -x -F "${fr}" && continue
+			log_crit "Conflict: '${f#${PWD}/}'"
+			rc=1
+		done
+
+return "${rc-0}"
+} || log_crit "'${_DESTDIR}' \` -rb\`"
+}
+
+short_binpkgs="${_BINPKGS#${PWD}/}"
+
+cd "${_BINPKGS}" || exit
+
+xbps-create -q -A "${archs}" -n "${pkgname}${_SUFFIX}-${version}_${revision}" -m "${maintainer}" -s "${short_desc}" -S "${long_desc}" -l "${license}" -D "${_DEPENDENCIES}" "${_DESTDIR}"
+xbps-rindex -a "${pkgname}${_SUFFIX}-${version}_${revision}.${archs}.xbps"
+log_info "DONE! Use the following command to install: \`sudo xbps-install -R ${short_binpkgs} ${pkgname}${_SUFFIX}-${version}_${revision}\`"
