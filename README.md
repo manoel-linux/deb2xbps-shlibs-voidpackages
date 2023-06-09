@@ -1,0 +1,1 @@
+# deb2xbps-shlibs-voidpackages
