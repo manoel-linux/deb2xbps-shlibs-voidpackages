@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo xbps-install -Syu
+sudo xbps-install -Syu -y
 
 sudo xbps-install -S unzip binutils tar curl xbps xz -y
 
