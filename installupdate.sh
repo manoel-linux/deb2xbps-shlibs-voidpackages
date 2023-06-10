@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo xbps-install -S unzip binutils tar curl xbps xz -y
+
 echo "#################################################################"
 echo "deb2xbps-installer: june 2023 xdeb-based"
 echo "#################################################################"
