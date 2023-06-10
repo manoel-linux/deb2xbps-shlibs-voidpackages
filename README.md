@@ -2,7 +2,7 @@
 
 - deb2xbps-version: june 2023
 
-- build-latest: 0.2.7 
+- build-latest: 0.2.8 
 
 - It is recommended to create a separate directory for installing .deb packages using deb2xbps. If you do not create a dedicated directory, deb2xbps may - ---- create files and folders in your current working directory, which can make it difficult to manage and remove them later on.
 
