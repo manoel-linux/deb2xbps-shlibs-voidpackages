@@ -12,6 +12,7 @@ else
 echo "#################################################################"
 echo "Without internet connection. Unable to check for updates."
 fi
+clear
 echo "#################################################################"
 echo "deb2xbps-uninstaller: june 2023 xdeb-based"
 echo "#################################################################"
@@ -36,3 +37,4 @@ fi
 rm /usr/bin/deb2xbps
 
 echo "DONE! Uninstallation completed."
+echo "#################################################################"
