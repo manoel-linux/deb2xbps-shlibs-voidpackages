@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo xbps-install -Syu
+
 sudo xbps-install -S unzip binutils tar curl xbps xz -y
 
 echo "#################################################################"
