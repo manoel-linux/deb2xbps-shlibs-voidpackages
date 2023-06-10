@@ -12,10 +12,6 @@ else
   echo "Without internet connection. Unable to check for updates."
 fi
 echo "#################################################################"
-echo "Checking for updates in Void Linux..." 
-echo "#################################################################"
-sudo xbps-install -Syu -y
-echo "#################################################################"
 echo "deb2xbps-version: june 2023 xdeb-based"
 echo "#################################################################"
 echo " ██████  ███████ ██████  ██████  ██   ██ ██████  ██████  ███████ "
