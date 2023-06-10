@@ -18,15 +18,11 @@
 
 - To install deb2xbps, follow the steps below:
 
-# 1. Install the necessary dependencies by running the following command
-
-- sudo xbps-install -S unzip binutils tar curl xbps xz
-
-# 2. Clone this repository by running the following command
+# 1. Clone this repository by running the following command
 
 - git clone https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages.git
 
-# 3. To install the deb2xbps script, follow these steps
+# 2. To install the deb2xbps script, follow these steps
 
 - chmod a+x installupdate.sh
 
@@ -34,7 +30,7 @@
 
 - When installing deb2xbps for the first time, you may encounter an error "rm /usr/bin/deb2xbps" if the file doesn't exist. This removal command is part of - - the update process, but during the initial installation, the deb2xbps file is not yet present in the /usr/bin/ directory. Therefore, you can safely ignore -- this error as it will not affect the installation of deb2xbps. The script will proceed to copy the deb2xbps file to the /usr/bin/ directory and set the ----- correct permissions.
 
-# 4. Execute the deb2xbps script
+# 3. Execute the deb2xbps script
 
 - mkdir example
 
