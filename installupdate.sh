@@ -1,9 +1,11 @@
 #!/bin/bash
 
+echo "#################################################################"
+echo "Checking for updates in Void Linux..." 
+echo "#################################################################"
 sudo xbps-install -Syu -y
-
-sudo xbps-install -S unzip binutils tar curl xbps xz -y
-
+echo "#################################################################"
+sudo xbps-install -S glxinfo unzip binutils tar curl xbps xz -y
 echo "#################################################################"
 echo "deb2xbps-installer: june 2023 xdeb-based"
 echo "#################################################################"
