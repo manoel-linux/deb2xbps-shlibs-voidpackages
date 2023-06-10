@@ -1,5 +1,6 @@
 #!/bin/sh
 
+clear
 echo "#################################################################"
 echo "Checking for updates in Void Linux..." 
 echo "#################################################################"
@@ -20,7 +21,7 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.3.0"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.3.1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
 echo "#################################################################"
