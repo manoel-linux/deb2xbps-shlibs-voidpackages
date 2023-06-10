@@ -287,3 +287,4 @@ cd "${_BINPKGS}" || exit
 xbps-create -q -A "${archs}" -n "${pkgname}${_SUFFIX}-${version}_${revision}" -m "${maintainer}" -s "${short_desc}" -S "${long_desc}" -l "${license}" -D "${_DEPENDENCIES}" "${_DESTDIR}"
 xbps-rindex -a "${pkgname}${_SUFFIX}-${version}_${revision}.${archs}.xbps"
 log_info "DONE! Use the following command to install: \`sudo xbps-install -R ${short_binpkgs} ${pkgname}${_SUFFIX}-${version}_${revision}\`"
+log_info "For remove: \`sudo xbps-remove -R ${pkgname}${_SUFFIX}-${version}_${revision}\`"
