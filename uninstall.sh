@@ -1,15 +1,15 @@
 #!/bin/bash
 
-  echo "###############################################################"
-  echo "Checking for updates in Void Linux..." 
-  echo "###############################################################"
+echo "#################################################################"
+echo "Checking for updates in Void Linux..." 
+echo "#################################################################"
 if ping -q -c 1 -W 1 voidlinux.org >/dev/null; then
-  echo "Internet connection established. It is possible to check for updates."
-  echo "###############################################################"
-  sudo xbps-install -Syu -y
+echo "Internet connection established. It is possible to check for updates."
+echo "#################################################################"
+sudo xbps-install -Syu -y
 else
-  echo "###############################################################"
-  echo "Without internet connection. Unable to check for updates."
+echo "#################################################################"
+echo "Without internet connection. Unable to check for updates."
 fi
 echo "#################################################################"
 echo "deb2xbps-uninstaller: june 2023 xdeb-based"
