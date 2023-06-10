@@ -22,7 +22,7 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.3.3"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.3.4"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
 echo "#################################################################"
@@ -136,14 +136,6 @@ cat << EOF
 EOF
 exit "${1}"
 }
-
-check_command xz
-check_command tar
-check_command curl
-check_command ar
-check_command objdump
-check_command xbps-rindex
-check_command xbps-create
 
 mkdir -p "${_PKGROOT}"
 
