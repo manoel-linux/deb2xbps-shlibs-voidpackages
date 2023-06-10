@@ -1,8 +1,8 @@
 #!/bin/bash
 
- echo "################################################################"
- echo "Checking for updates in Void Linux..." 
- echo "################################################################"
+  echo "###############################################################"
+  echo "Checking for updates in Void Linux..." 
+  echo "###############################################################"
 if ping -q -c 1 -W 1 voidlinux.org >/dev/null; then
   echo "Internet connection established. It is possible to check for updates."
   echo "###############################################################"
