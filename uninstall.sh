@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo xbps-install -Syu
+sudo xbps-install -Syu -y
 
 echo "#################################################################"
 echo "deb2xbps-uninstaller: june 2023 xdeb-based"
