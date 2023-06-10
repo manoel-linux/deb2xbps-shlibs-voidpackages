@@ -13,6 +13,7 @@ else
 echo "#################################################################"
 echo "Without internet connection. Unable to check for updates."
 fi
+clear
 echo "#################################################################"
 echo "deb2xbps-installer: june 2023 xdeb-based"
 echo "#################################################################"
@@ -39,5 +40,5 @@ rm /usr/bin/deb2xbps
 cp deb2xbps /usr/bin/
 
 chmod +x /usr/bin/deb2xbps
-
 echo "DONE! Installation/Update completed."
+echo "#################################################################"
