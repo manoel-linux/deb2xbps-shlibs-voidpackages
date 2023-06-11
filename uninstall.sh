@@ -36,6 +36,5 @@ exit 1
 fi
 
 rm /usr/bin/deb2xbps
-
 echo "DONE! Uninstallation completed."
 echo "#################################################################"
