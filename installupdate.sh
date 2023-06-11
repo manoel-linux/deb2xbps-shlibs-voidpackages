@@ -9,11 +9,13 @@ echo "Internet connection established. It is possible to check for updates."
 echo "#################################################################"
 
 read -p "Do you want to update your system? (y/n): " choice
+echo "#################################################################"
 if [[ $choice == "y" || $choice == "Y" ]]; then
 sudo xbps-install -Syu -y
-sudo xbps-install -S glxinfo unzip binutils tar curl xbps xz -y
 else
 echo "Skipping system update."
+echo "#################################################################"
+sudo xbps-install glxinfo unzip binutils tar curl xbps xz -y
 fi
 else
 echo "#################################################################"
