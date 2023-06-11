@@ -38,7 +38,9 @@
 
 - sudo deb2xbps -Syu example.deb 
 
-- DONE! Use for install command `sudo xbps-install -R binpkgs exemple
+- Use the following command to install: `sudo xbps-install -R binpkgs exemple`
+
+- For remove: `sudo xbps-remove -R exemple`
 
 - This will launch the deb2xbps tool, allowing you to convert .deb packages to .xbps format
 
