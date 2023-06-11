@@ -64,3 +64,15 @@
 # --arch=...                  Add an architecture for the package to run on
 # --rev=...                   Set package revision. Alternative to -y
 # --help                      Show this help page
+
+# Project Status
+
+- The deb2xbps project is currently in development. The latest stable version is 0.3.6. We aim to provide regular updates and add more features in the future.
+
+# License
+
+- deb2xbps is licensed under the MIT License. See the LICENSE file for more information.
+
+# Acknowledgements
+
+- We would like to thank the open-source community for their support and the libraries used in the development of deb2xbps.
