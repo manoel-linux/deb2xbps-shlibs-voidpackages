@@ -4,51 +4,51 @@
 
 - build-latest: 0.3.6
 
-- It is recommended to create a separate directory for installing .deb packages using deb2xbps. If you do not create a dedicated directory, deb2xbps may - ---- create files and folders in your current working directory, which can make it difficult to manage and remove them later on.
+- It is recommended to create a separate directory for installing .deb packages using DEB2XBPS. If you do not create a dedicated directory, deb2xbps may - ---- create files and folders in your current working directory, which can make it difficult to manage and remove them later on.
 
-- When using deb2xbps, it may create a "shlibs" directory that contains the necessary libraries (shlibs) required for installing the .deb packages. If you ---- accidentally create this directory, you can delete it without causing any harm to your system or the functionality of deb2xbps.
+- When using DEB2XBPS, it may create a "shlibs" directory that contains the necessary libraries (shlibs) required for installing the .deb packages. If you ---- accidentally create this directory, you can delete it without causing any harm to your system or the functionality of DEB2XBPS.
 
-- The deb2xbps is an open-source project, and we are happy to share it with the community. You have complete freedom to do whatever you want with deb2xbps, in - accordance with the terms of the MIT license. You can modify, distribute, use it in your own projects, or even create a fork of deb2xbps to add additional -- features.
+- DEB2XBPS is an open-source project, and we are happy to share it with the community. You have complete freedom to do whatever you want with DEB2XBPS, in accordance with the terms of the MIT license. You can modify, distribute, use it in your own projects, or even create a fork of DEB2XBPS to add additional features.
 
 # Based on xdeb
 
-- deb2xbps is based on xdeb, xdeb-github: https://github.com/toluschr/xdeb
+- DEB2XBPS is based on xdeb, xdeb-github: https://github.com/toluschr/xdeb
 
 ## Installation
 
-- To install deb2xbps, follow the steps below:
+- To install DEB2XBPS, follow the steps below:
 
 # 1. Clone this repository by running the following command
 
 - git clone https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages.git
 
-# 2. To install the deb2xbps script, follow these steps
+# 2. To install the DEB2XBPS script, follow these steps
 
-- chmod a+x installupdate.sh
+- chmod a+x `installupdate.sh`
 
-- sudo ./installupdate.sh
+- sudo `./installupdate.sh`
 
-- When installing deb2xbps for the first time, you may encounter an error "rm /usr/bin/deb2xbps" if the file doesn't exist. This removal command is part of - - the update process, but during the initial installation, the deb2xbps file is not yet present in the /usr/bin/ directory. Therefore, you can safely ignore -- this error as it will not affect the installation of deb2xbps. The script will proceed to copy the deb2xbps file to the /usr/bin/ directory and set the ----- correct permissions.
+- When installing DEB2XBPS for the first time, you may encounter an error "`rm /usr/bin/deb2xbps`" if the file doesn't exist. This removal command is part of - - the update process, but during the initial installation, the DEB2XBPS file is not yet present in the `/usr/bin/` directory. Therefore, you can safely ignore -- this error as it will not affect the installation of DEB2XBPS. The script will proceed to copy the DEB2XBPS file to the `/usr/bin/` directory and set the ----- correct permissions.
 
-# 3. Execute the deb2xbps script
+# 3. Execute the DEB2XBPS script
 
-- mkdir example
+- mkdir `example`
 
 - Download the .deb package you want to install and place it inside the directory 
 
-- sudo deb2xbps -Syu example.deb 
+- sudo deb2xbps -Syu `example.deb` 
 
 - Use the following command to install: `sudo xbps-install -R binpkgs exemple`
 
 - For remove: `sudo xbps-remove -R exemple`
 
-- This will launch the deb2xbps tool, allowing you to convert .deb packages to .xbps format
+- This will launch the DEB2XBPS tool, allowing you to convert .deb packages to .xbps format
 
 # For uninstall
 
-- chmod a+x uninstall.sh
+- chmod a+x `uninstall.sh`
 
-- sudo ./uninstall.sh
+- sudo `/uninstall.sh`
 
 # Help 
 # -y                          Automatic dependencies
@@ -67,12 +67,12 @@
 
 # Project Status
 
-- The deb2xbps project is currently in development. The latest stable version is 0.3.6. We aim to provide regular updates and add more features in the future.
+- The DEB2XBPS project is currently in development. The latest stable version is 0.3.6. We aim to provide regular updates and add more features in the future.
 
 # License
 
-- deb2xbps is licensed under the MIT License. See the LICENSE file for more information.
+- DEB2XBPS is licensed under the MIT License. See the LICENSE file for more information.
 
 # Acknowledgements
 
-- We would like to thank the open-source community for their support and the libraries used in the development of deb2xbps.
+- We would like to thank the open-source community for their support and the libraries used in the development of DEB2XBPS.
