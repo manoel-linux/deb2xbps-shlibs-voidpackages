@@ -37,7 +37,7 @@ exit 1
 fi
 
 rm /usr/bin/deb2xbps
-
+echo "#################################################################"
 cp deb2xbps /usr/bin/
 
 chmod +x /usr/bin/deb2xbps
