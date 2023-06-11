@@ -10,9 +10,9 @@
 
 - DEB2XBPS is an open-source project, and we are happy to share it with the community. You have complete freedom to do whatever you want with DEB2XBPS, in accordance with the terms of the MIT license. You can modify, distribute, use it in your own projects, or even create a fork of DEB2XBPS to add additional features.
 
-# Based on xdeb
+# Based on XDEB
 
-- DEB2XBPS is based on xdeb, xdeb-github: https://github.com/toluschr/xdeb
+- DEB2XBPS is a project based on the code of xdeb, a powerful package conversion tool. xdeb was a fundamental source of inspiration for the development of DEB2XBPS, and I would like to express my gratitude to the xdeb team for their incredible work. The original source code of xdeb can be found at: https://github.com/toluschr/xdeb.
 
 ## Installation
 
