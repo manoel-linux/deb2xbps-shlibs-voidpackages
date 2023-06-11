@@ -7,10 +7,16 @@ echo "#################################################################"
 if ping -q -c 1 -W 1 voidlinux.org >/dev/null; then
 echo "Internet connection established. It is possible to check for updates."
 echo "#################################################################"
+    
+read -p "Do you want to update your system? (y/n): " choice
+if [[ $choice == "y" || $choice == "Y" ]]; then
 sudo xbps-install -Syu -y
 else
+echo "Skipping system update."
+fi
+else
 echo "#################################################################"
-echo "Without internet connection. Unable to check for updates."
+echo "No internet connection. Unable to check for updates Skipping."
 fi
 clear
 echo "#################################################################"
