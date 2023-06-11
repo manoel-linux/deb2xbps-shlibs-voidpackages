@@ -31,8 +31,9 @@ echo "Linux $(uname -r)"
 echo "#################################################################"
 
 if [[ $EUID -ne 0 ]]; then
-   echo "ERROR! sudo needed" 
-   exit 1
+echo "ERROR! sudo needed" 
+echo "#################################################################"
+exit 1
 fi
 
 rm /usr/bin/deb2xbps
