@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$(uname -m)" != "x86_64" ]; then
+echo "The deb2xbps tool cannot be executed on a 32-bit system. Support for 32-bit systems has been discontinued."
+exit 1
+fi
+
 clear
 echo "#################################################################"
 echo "Checking for updates in Void Linux..." 
