@@ -1,7 +1,15 @@
 #!/bin/sh
 
 if [ "$(uname -m)" != "x86_64" ]; then
+echo "#################################################################"
+echo " ██████  ██████        ██████  ██ ████████ "
+echo "      ██      ██       ██   ██ ██    ██    "
+echo "  █████   █████  █████ ██████  ██    ██    "
+echo "      ██ ██            ██   ██ ██    ██    "
+echo " ██████  ███████       ██████  ██    ██    "                                                                                    
+echo "#################################################################"
 echo "The deb2xbps tool cannot be executed on a 32-bit system. Support for 32-bit systems has been discontinued."
+echo "#################################################################"
 exit 1
 fi
 
@@ -35,12 +43,15 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.4.2"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.4.3"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
+echo "#################################################################"
+echo "Deprecation of 32-bit"
+echo "#################################################################"
+echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "The support for 32-bit .deb packages has been discontinued."
 echo "If you try to install the discontinued 32-bit .deb package, it will not install."
-echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 echo "$(date)"
 echo "Linux $(uname -r)"
@@ -135,6 +146,7 @@ exit 1
 
 usage() {
 cat << EOF
+#################################################################
 -y                          Automatic dependencies
 -S                          Sync dependency file
 -q                          Don't build the package at all
@@ -164,7 +176,7 @@ log_crit "'${1}' invalid. Use ${1}=... instead"; exit 1; continue;;
 --revision=*|--rev=*) revision="${1#*=}"; shift; continue;;
 
 --help) usage 0;;
---*) log_crit "invalid option '${1}'"; usage 1; exit 1;;
+--*) log_crit "invalid '${1}'"; usage 1; exit 1;;
 -*);;
 *) [ "${#}" = 1 ] && _BASEPKG="${1}"; break;;
 esac
@@ -184,7 +196,7 @@ b*) _OPT_EXTRACT=false;;
 u*) _OPT_CLEAN_DIR=true;;
 i*) _OPT_WARN_CONFLICT=false;;
 f*) _OPT_FIX_CONFLICT=true;;
-*) log_crit "invalid option -- '${flag%"${flag#?}"}'"; usage 1;;
+*) log_crit "invalid -- '${flag%"${flag#?}"}'"; usage 1;;
 esac
 
 flag="${flag#?}"
@@ -249,7 +261,7 @@ all)
 if [ "$(uname -m)" = "x86_64" ]; then
 archs="noarch"
 else
-echo "The support for 32-bit in deb2xbps has also been discontinued."
+echo "TThe support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 exit 1
 fi
