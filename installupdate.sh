@@ -45,8 +45,10 @@ exit 1
 fi
 
 rm /usr/bin/deb2xbps
+
 cp deb2xbps /usr/bin/
 
 chmod +x /usr/bin/deb2xbps
+
 echo "DONE! Installation/Update completed."
 echo "#################################################################"
