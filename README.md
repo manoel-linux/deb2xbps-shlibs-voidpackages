@@ -2,9 +2,9 @@
 
 - deb2xbps-version: june 2023
 
-- build-latest: 0.3.7
+- build-latest: 0.3.8
 
-- The support for 32-bit .deb packages has been discontinued 
+- The support for 32-bit .deb packages has been discontinued.
 - If you try to install the discontinued 32-bit .deb package, it will not install.
 
 - It is recommended to create a separate directory for installing .deb packages using DEB2XBPS. If you do not create a dedicated directory, deb2xbps may - ---- create files and folders in your current working directory, which can make it difficult to manage and remove them later on.
@@ -77,7 +77,7 @@
 
 # Project Status
 
-- The DEB2XBPS project is currently in development. The latest stable version is 0.3.7. We aim to provide regular updates and add more features in the future.
+- The DEB2XBPS project is currently in development. The latest stable version is 0.3.8. We aim to provide regular updates and add more features in the future.
 
 # License
 
