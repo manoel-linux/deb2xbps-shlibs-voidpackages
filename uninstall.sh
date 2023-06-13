@@ -1,7 +1,15 @@
 #!/bin/bash
 
 if [ "$(uname -m)" != "x86_64" ]; then
+echo "#################################################################"
+echo " ██████  ██████        ██████  ██ ████████ "
+echo "      ██      ██       ██   ██ ██    ██    "
+echo "  █████   █████  █████ ██████  ██    ██    "
+echo "      ██ ██            ██   ██ ██    ██    "
+echo " ██████  ███████       ██████  ██    ██    "                                                                                    
+echo "#################################################################"
 echo "The deb2xbps tool cannot be executed on a 32-bit system. Support for 32-bit systems has been discontinued."
+echo "#################################################################"
 exit 1
 fi
 
@@ -37,9 +45,12 @@ echo " ██████  ███████ ██████  ███�
 echo "#################################################################"
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
+echo "#################################################################"
+echo "Deprecation of 32-bit"
+echo "#################################################################"
+echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "The support for 32-bit .deb packages has been discontinued."
 echo "If you try to install the discontinued 32-bit .deb package, it will not install."
-echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 echo "$(date)"
 echo "linux $(uname -r)"
