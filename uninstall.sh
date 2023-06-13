@@ -34,6 +34,7 @@ echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpacka
 echo "xdeb-github: https://github.com/toluschr/xdeb"
 echo "The support for 32-bit .deb packages has been discontinued."
 echo "If you try to install the discontinued 32-bit .deb package, it will not install."
+echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 echo "$(date)"
 echo "linux $(uname -r)"
