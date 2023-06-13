@@ -30,9 +30,10 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.3.6"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.3.7"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
+echo "The support for 32-bit .deb packages has been discontinued"
 echo "#################################################################"
 echo "$(date)"
 echo "Linux $(uname -r)"
@@ -133,7 +134,6 @@ cat << EOF
 -C                          Clean all files
 -b                          No extract, just build files in destdir
 -u                          Remove empty directories
--32                         Add the 32bit suffix
 -i                          Ignore file conflicts
 -f                          Attempt to automatically fix common conflicts
 --deps=                     Add manual dependencies
@@ -175,7 +175,6 @@ q*) _OPT_QUIT=true;;
 Q*) exit 0;;
 b*) _OPT_EXTRACT=false;;
 u*) _OPT_CLEAN_DIR=true;;
-m*) _SUFFIX="-32bit";;
 i*) _OPT_WARN_CONFLICT=false;;
 f*) _OPT_FIX_CONFLICT=true;;
 *) log_crit "invalid option -- '${flag%"${flag#?}"}'"; usage 1;;
@@ -208,20 +207,6 @@ mkdir -p "${_WORKDIR}"
 ar -xf "${_BASEPKG}" --output "${_WORKDIR}" &&
 tar -xf "${_WORKDIR}"/control.* -C "${_DATADIR}" &&
 tar -xf "${_WORKDIR}"/data.* -C "${_DESTDIR}" || {
-echo "######################
-clear
-echo "#################################################################"
-echo "Checking for updates in Void Linux..." 
-echo "#################################################################"
-if ping -q -c 1 -W 1 voidlinux.org >/dev/null; then
-echo "Internet connection established. It is possible to check for updates."
-echo "#################################################################"
-sudo xbps-install -Syu -y
-else
-echo "#################################################################"
-echo "Without internet connection. Unable to check for updates."
-fi
-clear###########################################"
 log_crit "ERROR! Check .deb"
 echo "#################################################################"
 exit 1
@@ -253,7 +238,6 @@ case "${archs}" in
 amd64) archs="x86_64";;
 arm64) archs="aarch64";;
 armhf) archs="armv7l";;
-i386) archs="i686";;
 all) archs="noarch";;
 esac
 
@@ -265,7 +249,6 @@ _DEPENDENCIES="${_DEPENDENCIES%* }"
 [ "${_OPT_FIX_CONFLICT}" = true ] && {
 fix_conflict bin   usr
 fix_conflict lib   usr
-fix_conflict lib32 usr
 fix_conflict lib64 usr
 fix_conflict sbin  usr
 fix_conflict usr/lib64 usr lib
