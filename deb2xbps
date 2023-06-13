@@ -30,10 +30,11 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.3.7"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.3.8"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
-echo "The support for 32-bit .deb packages has been discontinued"
+echo "The support for 32-bit .deb packages has been discontinued."
+echo "If you try to install the discontinued 32-bit .deb package, it will not install."
 echo "#################################################################"
 echo "$(date)"
 echo "Linux $(uname -r)"
@@ -238,7 +239,14 @@ case "${archs}" in
 amd64) archs="x86_64";;
 arm64) archs="aarch64";;
 armhf) archs="armv7l";;
-all) archs="noarch";;
+all)
+    if [ "$(uname -m)" = "x86_64" ]; then
+        archs="noarch"
+    else
+        echo "The support for 32-bit packages has been discontinued"
+        exit 1
+    fi
+    ;;
 esac
 
 [ "${_OPT_DEPS}" = true ] && _DEPENDENCIES="${_DEPENDENCIES}$(genrdeps)" 
