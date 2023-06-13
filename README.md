@@ -71,6 +71,8 @@
 
 - CPU-T version for ubuntu/debian: https://github.com/manoel-linux/cpu-t-ubuntu-debian.
 
+- CPU-T version for Arch/Artix: https://github.com/manoel-linux/cpu-t-arch-artix
+
 # Project Status
 
 - The DEB2XBPS project is currently in development. The latest stable version is 0.3.6. We aim to provide regular updates and add more features in the future.
