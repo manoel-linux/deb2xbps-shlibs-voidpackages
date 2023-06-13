@@ -240,13 +240,14 @@ amd64) archs="x86_64";;
 arm64) archs="aarch64";;
 armhf) archs="armv7l";;
 all)
-    if [ "$(uname -m)" = "x86_64" ]; then
-        archs="noarch"
-    else
-        echo "The support for 32-bit packages has been discontinued"
-        exit 1
-    fi
-    ;;
+if [ "$(uname -m)" = "x86_64" ]; then
+archs="noarch"
+else
+echo "The support for 32-bit packages has been discontinued"
+echo "#################################################################"
+exit 1
+fi
+;;
 esac
 
 [ "${_OPT_DEPS}" = true ] && _DEPENDENCIES="${_DEPENDENCIES}$(genrdeps)" 
