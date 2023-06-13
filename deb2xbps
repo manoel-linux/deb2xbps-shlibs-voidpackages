@@ -30,7 +30,7 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.3.9"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.4.0"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
 echo "The support for 32-bit .deb packages has been discontinued."
@@ -244,7 +244,7 @@ all)
 if [ "$(uname -m)" = "x86_64" ]; then
 archs="noarch"
 else
-echo "The support for 32-bit packages has been discontinued"
+echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 exit 1
 fi
