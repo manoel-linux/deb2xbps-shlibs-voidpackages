@@ -74,7 +74,7 @@
 
 - CPU-T version for ubuntu/debian: https://github.com/manoel-linux/cpu-t-ubuntu-debian.
 
-- CPU-T version for Arch/Artix: https://github.com/manoel-linux/cpu-t-arch-artix.
+- CPU-T version for Arch/Artix/Manjaro: https://github.com/manoel-linux/cpu-t-arch-artix.
 
 # Project Status
 
