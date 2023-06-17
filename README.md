@@ -2,7 +2,7 @@
 
 - deb2xbps-version: june 2023
 
-- build-latest: 0.4.4
+- build-latest: 0.4.5
 
 - The support for 32-bit .deb packages has been discontinued.
 - If you try to install the discontinued 32-bit .deb package, it will not install.
@@ -80,7 +80,7 @@
 
 # Project Status
 
-- The DEB2XBPS project is currently in development. The latest stable version is 0.4.4. We aim to provide regular updates and add more features in the future.
+- The DEB2XBPS project is currently in development. The latest stable version is 0.4.5. We aim to provide regular updates and add more features in the future.
 
 # License
 
