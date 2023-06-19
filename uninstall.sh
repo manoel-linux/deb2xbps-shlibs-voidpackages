@@ -52,9 +52,6 @@ echo "The support for 32-bit .deb packages has been discontinued."
 echo "If you try to install the discontinued 32-bit .deb package, it will not install."
 echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
-echo "$(date)"
-echo "linux $(uname -r)"
-echo "#################################################################"
 
 if [[ $EUID -ne 0 ]]; then
 echo "ERROR! sudo needed" 
