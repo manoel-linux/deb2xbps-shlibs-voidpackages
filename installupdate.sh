@@ -55,7 +55,7 @@ echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 
 if [[ $EUID -ne 0 ]]; then
-echo "ERROR! sudo needed" 
+echo "ERROR! Superuser privileges or sudo required to execute the script." 
 echo "#################################################################"
 exit 1
 fi
