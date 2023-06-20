@@ -43,7 +43,7 @@ echo " ██   ██ █████   ██████   █████   
 echo " ██   ██ ██      ██   ██ ██       ██ ██  ██   ██ ██           ██ "
 echo " ██████  ███████ ██████  ███████ ██   ██ ██████  ██      ███████ "
 echo "#################################################################"
-echo "build-latest: 0.4.5"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+echo "build-latest: 0.4.6"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 echo "deb2xbps-github: https://github.com/manoel-linux/deb2xbps-shlibs-voidpackages"
 echo "xdeb-github: https://github.com/toluschr/xdeb"
 echo "#################################################################"
@@ -53,6 +53,12 @@ echo "The support for 32-bit .deb packages has been discontinued."
 echo "If you try to install the discontinued 32-bit .deb package, it will not install."
 echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
+
+if [[ $EUID -ne 0 ]]; then
+echo "ERROR! Superuser privileges required to execute the script." 
+echo "#################################################################"
+exit 1
+fi
 
 _PKGROOT="${_PKGROOT-${PWD}}"
 _WORKDIR="${_PKGROOT}/workdir"
