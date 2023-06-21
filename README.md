@@ -6,7 +6,7 @@
 - build-latest: 0.4.6
 
 - The support for 32-bit .deb packages has been discontinued.
-- If you try to install the discontinued 32-bit .deb package, it will not install.
+- If you try to install the 32-bit .deb package, it will not install.
 - The support for 32-bit in deb2xbps has also been discontinued.
 
 - It is recommended to create a separate directory for installing .deb packages using DEB2XBPS. If you do not create a dedicated directory, deb2xbps may - ---- create files and folders in your current working directory, which can make it difficult to manage and remove them later on.
