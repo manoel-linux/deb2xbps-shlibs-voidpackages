@@ -50,7 +50,8 @@ echo "#################################################################"
 echo "The support for 32-bit has been deprecated"
 echo "#################################################################"
 echo "The support for 32-bit .deb packages has been discontinued."
-echo "If you try to install the discontinued 32-bit .deb package, it will not install."
+echo "If you try to install the 32-bit .deb package, it may be converted, 
+but it will not be installed due to the discontinued support for 32-bit."
 echo "The support for 32-bit in deb2xbps has also been discontinued."
 echo "#################################################################"
 
