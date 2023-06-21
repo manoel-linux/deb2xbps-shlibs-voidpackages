@@ -73,6 +73,8 @@
 
 - opti-gnome-wayland is a powerful program aimed at optimizing the GNOME boot process and reducing memory usage, resulting in a lighter and more efficient GNOME   - desktop environment. With this tool, you can enjoy a faster and more responsive experience when using GNOME, even on systems with limited resources.  You can   - find the source code and more information about opti-gnome-wayland in the following repository: https://github.com/manoel-linux/opti-gnome-wayland
 
+- way-display-guard is a tool that can resolve a display:0 issue when attempting to run a program as a superuser or using "sudo." Remember to execute the way-display-guard every time you shut down or restart your PC.   You can   - find the source code and more information about way-display-guard in the following repository: https://github.com/manoel-linux/way-display-guard
+
 - opti-sway-wayland is a tool to optimize the boot process of Sway and make the PC boot faster. You can   - find the source code and more information about install-uefi-in-qemu in the following repository: https://github.com/manoel-linux/opti-sway-wayland
 
 - The install-uefi-in-qemu-confidential script is a tool for installing QEMU UEFI when the UEFI BIOS is not included or available in the distribution's repository. You can   - find the source code and more information about install-uefi-in-qemu in the following repository: https://github.com/manoel-linux/install-uefi-in-qemu
