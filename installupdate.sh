@@ -67,7 +67,13 @@ sudo cp deb2xbps /usr/bin/
 
 sudo chmod +x /usr/bin/deb2xbps
 
-echo "DONE! Installation/Update completed."
+echo " ██████   ██████  ███    ██ ███████ ██ "
+echo " ██   ██ ██    ██ ████   ██ ██      ██ "
+echo " ██   ██ ██    ██ ██ ██  ██ █████   ██ "
+echo " ██   ██ ██    ██ ██  ██ ██ ██         "
+echo " ██████   ██████  ██   ████ ███████ ██ "  
+echo "#################################################################"
+echo "Installation/Update completed."
 echo "#################################################################"
 echo "To use DEB2XBPS, execute the following command: sudo deb2xbps"
 echo "#################################################################"
