@@ -81,5 +81,5 @@ echo " ██████   ██████  ██   ████ ███�
 echo "#################################################################"
 echo "Installation/Update completed."
 echo "#################################################################"
-echo "To use DEB2XBPS, execute the following command: sudo deb2xbps"
+echo "To use DEB2XBPS, execute the following command: sudo deb2xbps or deb2xbps"
 echo "#################################################################"
