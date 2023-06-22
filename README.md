@@ -1,9 +1,9 @@
 # DEB2XBPS                                                                                                                                                     
 - deb2xbps-version: june 2023
 
-- Starting from version 0.4.6, superuser privileges or sudo are required to use deb2xbps
+- It has been unlocked, now you can use deb2xbps without sudo or superuser.
 
-- build-latest: 0.4.8
+- build-latest: 0.4.9
 
 - The support for 32-bit .deb packages has been discontinued
 - If you try to install the 32-bit .deb package, it may be converted, but it will not be installed due to the discontinued support for 32-bit.
@@ -83,7 +83,7 @@
 
 # Project Status
 
-- The DEB2XBPS project is currently in development. The latest stable version is 0.4.8. We aim to provide regular updates and add more features in the future.
+- The DEB2XBPS project is currently in development. The latest stable version is 0.4.9. We aim to provide regular updates and add more features in the future.
 
 # License
 
