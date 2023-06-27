@@ -17,6 +17,7 @@ clear
 echo "#################################################################"
 echo "Checking for updates in Void Linux..." 
 echo "#################################################################"
+sudo xbps-install inetutils-ping -y
 if ping -q -c 1 -W 1 voidlinux.org >/dev/null; then
 echo "Internet connection established. It is possible to check for updates."
 echo "#################################################################"
