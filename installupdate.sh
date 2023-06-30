@@ -33,7 +33,7 @@ exit 1
 fi
 echo "Checking for updates in Void Linux..." 
 echo "#################################################################"
-sudo xbps-install inetutils-ping glxinfo unzip binutils tar curl xbps xz -y
+sudo xbps-install inetutils-ping unzip binutils tar curl xbps xz -y
 clear
 echo "#################################################################"
 
