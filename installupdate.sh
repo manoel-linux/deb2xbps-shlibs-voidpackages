@@ -13,13 +13,28 @@ echo "#################################################################"
 exit 1
 fi
 
-clear
+web="fsf.org"
+
+if ! ping -q -c 1 -W 1 "$web" >/dev/null; then
 echo "#################################################################"
+echo "No internet connection. The script will not be executed."
+echo "#################################################################"
+exit 1
+fi
+echo "Connected to the internet. Running the script..."
+echo "#################################################################"
+clear
+if [ ! -x /bin/xbps-install ]; then
+echo "#################################################################"
+echo "(Warning!) >> You are trying to run a version meant for another distribution. 
+To prevent issues, the script has blocked a warning to execute the version meant for your distribution."
+echo "#################################################################"
+exit 1
+fi
 echo "Checking for updates in Void Linux..." 
 echo "#################################################################"
-sudo xbps-install inetutils-ping -y
-if ping -q -c 1 -W 1 voidlinux.org >/dev/null; then
-echo "Internet connection established. It is possible to check for updates."
+sudo xbps-install inetutils-ping glxinfo unzip binutils tar curl xbps xz -y
+clear
 echo "#################################################################"
 
 read -p "Do you want to update your system? (y/n): " choice
@@ -29,11 +44,6 @@ sudo xbps-install -Syu -y
 else
 echo "Skipping system update."
 echo "#################################################################"
-sudo xbps-install glxinfo unzip binutils tar curl xbps xz -y
-fi
-else
-echo "#################################################################"
-echo "No internet connection. Unable to check for updates Skipping."
 fi
 clear
 echo "#################################################################"
