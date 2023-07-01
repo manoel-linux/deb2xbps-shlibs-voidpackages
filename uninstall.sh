@@ -36,7 +36,7 @@ echo "No internet connection. Unable to check for updates Skipping."
 fi
 clear
 echo "#################################################################"
-echo "deb2xbps-uninstaller: june 2023 xdeb-based"
+echo "deb2xbps-uninstaller: july 2023 xdeb-based"
 echo "#################################################################"
 echo " ██████  ███████ ██████  ██████  ██   ██ ██████  ██████  ███████ "
 echo " ██   ██ ██      ██   ██      ██  ██ ██  ██   ██ ██   ██ ██      "
