@@ -33,8 +33,7 @@ echo "#################################################################"
 clear
 if [ ! -x /bin/xbps-install ]; then
 echo "#################################################################"
-echo "(Warning!) >> You are trying to run a version meant for another distribution. 
-To prevent issues, the script has blocked a warning to execute the version meant for your distribution."
+echo "(Warning!) >> You are trying to execute a script specifically designed for Void Linux."
 echo "#################################################################"
 exit 1
 fi
