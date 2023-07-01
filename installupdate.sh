@@ -21,6 +21,13 @@ echo "No internet connection. The script will not be executed."
 echo "#################################################################"
 exit 1
 fi
+
+sudo xbps-install inetutils-ping -y
+echo "#################################################################"
+
+clear
+
+echo "#################################################################"
 echo "Connected to the internet. Running the script..."
 echo "#################################################################"
 clear
@@ -33,7 +40,7 @@ exit 1
 fi
 echo "Checking for updates in Void Linux..." 
 echo "#################################################################"
-sudo xbps-install inetutils-ping unzip binutils tar curl xbps xz -y
+sudo xbps-install unzip binutils tar curl xbps xz -y
 clear
 echo "#################################################################"
 
