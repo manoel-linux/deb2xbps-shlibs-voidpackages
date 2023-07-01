@@ -1,5 +1,5 @@
 # DEB2XBPS                                                                                                                                                     
-- deb2xbps-version: june 2023
+- deb2xbps-version: july 2023
 
 - It has been unlocked, now you can use deb2xbps without sudo or superuser.
 
